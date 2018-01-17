@@ -78,7 +78,7 @@ class DefaultJWSProvider implements JWSProviderInterface
             $claims['exp'] = time() + $this->ttl;
         }
 
-        $jws->setPayload($payload + $claims);
+        $jws->setPayload($claims + $payload);
         $jws->sign(
             $this->keyLoader->loadKey('private'),
             $this->keyLoader->getPassphrase()
